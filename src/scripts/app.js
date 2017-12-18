@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Search from './components/search.js'
+import Tile from './components/tile.js'
 import httpService from './services/httpService.js'
 
 
@@ -37,7 +38,7 @@ class Main extends Component {
 
   constructTile(tile, index) {
     return(
-      <div className="tile-container">
+      <div key={index} className="tile-container">
         <img src={tile.Poster} />
       </div>
     )
@@ -45,7 +46,7 @@ class Main extends Component {
 
   getFullElement() {
     const template = this.state.data.Search.map(this.constructTile.bind(this))
-    return template;
+    return <Tile template={template} />
   }
 
   render() {
