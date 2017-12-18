@@ -7,7 +7,7 @@ const httpService = {
 
   getFilmData: function(query) {
     return axios.get(`${API_URL}${query}&apikey=${API_KEY}`)
-      .then(response => response.data)
+      .then(response => response)
       .catch(err => err);
   }
 
