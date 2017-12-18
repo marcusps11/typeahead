@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import httpService from '../services/httpService.js'
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -8,7 +9,9 @@ export default class Search extends React.Component {
   }
 
   onChange(event) {
-    console.log(event.target.value)
+    const queryString = event.target.value;
+    httpService.getFilmData(queryString)
+    .then(response => console.log(response))
   }
 
   render() {
