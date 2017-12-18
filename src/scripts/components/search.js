@@ -4,19 +4,14 @@ import httpService from '../services/httpService.js'
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
-
-    this.onChange = this.onChange.bind(this);
-  }
-
-  onChange(event) {
-    const queryString = event.target.value;
-    httpService.getFilmData(queryString)
-    .then(response => console.log(response))
+    this.state = {
+      value: null
+    }
   }
 
   render() {
     return (
-      <input type="text" onChange={this.onChange} placeholder="Search."/>
+      <input type="text" onChange={(event) => this.props.onChange(event)} placeholder="Search."/>
     );
   }
  }
