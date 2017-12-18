@@ -35,16 +35,37 @@ class Main extends Component {
     console.log(error);
   }
 
+  constructTile(tile, index) {
+    return(
+      <div className="tile-container">
+        <img src={tile.Poster} />
+      </div>
+    )
+  }
+
+  getFullElement() {
+    const template = this.state.data.Search.map(this.constructTile.bind(this))
+    return template;
+  }
+
   render() {
-    console.log(this.state.data)
+    const sectionMarkup = this.state.data.Search && this.state.data.Search.length ? this.getFullElement() : null;
     return (
       <div>
       <Search onChange={(event) => this.onChange(event)}/>
+        {sectionMarkup}
       </div>
     )
   }
 }
 
-ReactDOM.render((
+const App = () => (
+  <div>
     <Main />
+  </div>
+);
+
+
+ReactDOM.render((
+    <App />
 ), document.getElementById('root'))
