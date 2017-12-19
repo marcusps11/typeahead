@@ -16,6 +16,7 @@ class Child extends React.Component {
   }
 
   componentWillMount() {
+    console.log('called')
     httpService.getFilmById(this.props.match.params.id)
     .then(this.onDataResponse.bind(this))
     .catch(this.handleXhrError)
@@ -45,13 +46,13 @@ class Child extends React.Component {
 
   render() {
     const sectionMarkup = this.state.data ? this.getFullElement() : null;
-    console.log(sectionMarkup)
     return (
       <div>
         <h1>{this.props.match.params.id}</h1>
         {sectionMarkup}
       </div>
     );
+    <Route path="/:id" component={Child}/>
   }
 }
 
