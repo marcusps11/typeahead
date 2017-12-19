@@ -3,6 +3,15 @@ import ReactDOM from 'react-dom';
 import Search from './components/search.js'
 import Tile from './components/tile.js'
 import httpService from './services/httpService.js'
+import {
+  BrowserRouter,
+  BrowserHistory,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom'
+import Child from './components/child.js';
+
 
 
 class Main extends Component {
@@ -20,6 +29,7 @@ class Main extends Component {
     .catch(this.handleXhrError)
   }
 
+
   onDataResponse(response) {
     if (response.status === 200) {
       this.updateState({data: response.data})
@@ -36,17 +46,8 @@ class Main extends Component {
     console.log(error);
   }
 
-  constructTile(tile, index) {
-    return(
-      <div key={index} className="tile-container">
-        <img src={tile.Poster} />
-      </div>
-    )
-  }
-
   getFullElement() {
-    const template = this.state.data.Search.map(this.constructTile.bind(this))
-    return <Tile template={template} />
+    return <Tile template={this.state.data.Search}  />
   }
 
   render() {
@@ -68,5 +69,8 @@ const App = () => (
 
 
 ReactDOM.render((
+  <BrowserRouter>
     <App />
+  </BrowserRouter>
+
 ), document.getElementById('root'))
