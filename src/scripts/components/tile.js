@@ -11,8 +11,9 @@ const Tile = ({template}) => (
 
   <div>
     {template.map((item, index) =>
-      <Link key={index} to={{pathname: `/${item.imdbID}`  }}>
+      <Link key={index} to={{pathname: `/film/${item.imdbID}`  }}>
        <div >{item.Title}</div>
+       <img src={item.Poster}/>
       </Link>
     )}
 

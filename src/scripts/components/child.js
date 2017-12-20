@@ -2,11 +2,12 @@ import React from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from 'react-router-dom'
 import httpService from '../services/httpService.js'
 
-class Child extends React.Component {
+class ShowFilm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -15,13 +16,11 @@ class Child extends React.Component {
     }
   }
 
-  componentWillMount() {
-    console.log('called')
+  componentDidMount() {
     httpService.getFilmById(this.props.match.params.id)
     .then(this.onDataResponse.bind(this))
     .catch(this.handleXhrError)
   }
-
 
   onDataResponse(response) {
     if (response.status === 200) {
@@ -36,10 +35,12 @@ class Child extends React.Component {
   }
 
   getFullElement() {
-    console.log('called')
+    console.log(this.state.data)
     return(
-    <div>
+    <div className="film-item">
       <h1>{this.state.data.Title}</h1>
+      <img src={this.state.data.Poster}/>
+      <p>{this.state.data.plot}</p>
     </div>
     )
   }
@@ -52,9 +53,7 @@ class Child extends React.Component {
         {sectionMarkup}
       </div>
     );
-    <Route path="/:id" component={Child}/>
   }
 }
 
-
-export default Child;
+export default ShowFilm;

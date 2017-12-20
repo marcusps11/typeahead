@@ -1,4 +1,13 @@
-h1 {
-  font-size: 54px;
-  color: red;
+@import 'search';
+
+.home {
+
+  &--container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__content-container {
+
+  }
 }
