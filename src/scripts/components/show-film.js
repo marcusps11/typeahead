@@ -35,12 +35,15 @@ class ShowFilm extends React.Component {
   }
 
   getFullElement() {
-    console.log(this.state.data)
     return(
     <div className="film-item">
-      <h1>{this.state.data.Title}</h1>
-      <img src={this.state.data.Poster}/>
-      <p>{this.state.data.plot}</p>
+      <div className="film-item__info-container">
+        <h1>{this.state.data.Title}</h1>
+        <p>{this.state.data.Plot}</p>
+      </div>
+      <div className="film-item__image-container">
+        <img src={this.state.data.Poster}/>
+      </div>
     </div>
     )
   }
@@ -48,8 +51,8 @@ class ShowFilm extends React.Component {
   render() {
     const sectionMarkup = this.state.data ? this.getFullElement() : null;
     return (
-      <div>
-        <h1>{this.props.match.params.id}</h1>
+      <div className="film-item__content-container">
+        <h1>Detail Page</h1>
         {sectionMarkup}
       </div>
     );

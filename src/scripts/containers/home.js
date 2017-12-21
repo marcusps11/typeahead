@@ -10,7 +10,6 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-import Child from '../components/child.js';
 
 class HomeContainer extends React.Component {
   constructor(props) {
@@ -51,11 +50,10 @@ class HomeContainer extends React.Component {
   render() {
     const sectionMarkup = this.state.data.Search && this.state.data.Search.length ? this.getFullElement() : null;
     return (
-      <div className=" home home--container">
+      <div className="home">
+      <h1>TYPEAHEAD</h1>
       <Search onChange={(event) => this.onChange(event)}/>
-        <div className="home__content-container">
         {sectionMarkup}
-        </div>
       </div>
     )
   }

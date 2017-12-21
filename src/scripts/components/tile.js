@@ -5,19 +5,21 @@ import {
   Link,
   Switch
 } from 'react-router-dom'
-import Child from './child.js';
+import Child from './show-film.js';
 
 const Tile = ({template}) => (
 
-  <div>
+  <div className="tile__content-container">
     {template.map((item, index) =>
-      <Link key={index} to={{pathname: `/film/${item.imdbID}`  }}>
-       <div >{item.Title}</div>
-       <img src={item.Poster}/>
+      <div key={index} className="tile__item">
+      <Link to={{pathname: `/film/${item.imdbID}`  }}>
+        <h2 >{item.Title}</h2>
+        <div className="tile__item-image-container">
+          <img className="tile__item-image" src={item.Poster}/>
+        </div>
       </Link>
+    </div>
     )}
-
-
   </div>
 
 );
